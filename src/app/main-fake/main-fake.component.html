@@ -1,0 +1,31 @@
+<div class="container">
+  <div style="text-align: center" *ngIf="loading">
+    <img style="width: 200px;" src="assets/img/loading.gif">
+  </div>
+  <button (click)="getListFakes()">Load</button>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th style="visibility: hidden;" scope="col">#</th>
+            <th scope="col">User Id</th>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Body</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let fake of fakeService.listFakesLoaded; let i = index">
+          <tr *ngIf="handlerFake(fake).id !== null">
+            <td style="visibility: hidden;">{{i}}</td>
+            <td style="width: 80px;">{{handlerFake(fake).userId}}</td>
+            <td>{{handlerFake(fake).id}}</td>
+            <td>{{handlerFake(fake).title}}</td>
+            <td>{{handlerFake(fake).body}}</td>
+            <td style="width: 165px;">
+                <button type="button" class="btn btn-link" routerLink="/detail/{{fake ? fake.id : 0}}">Editar</button>
+                <button type="button" class="btn btn-link" (click)="deleteFake(fake.id, i)">Excluir</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
