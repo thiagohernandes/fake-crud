@@ -1,5 +1,9 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { By } from '@angular/platform-browser';
+
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -7,6 +11,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      imports: [RouterModule, RouterTestingModule]
     }).compileComponents();
   }));
 
@@ -16,16 +21,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'fake-crud'`, () => {
+  it('should btnHome == Home', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('fake-crud');
-  });
-
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to fake-crud!');
+    fixture.detectChanges(); 
+    const id = fixture.debugElement.query(By.css('#btnHome'));
+    expect(id.nativeElement.innerText).toContain('Home');
   });
 });

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FakeService } from '../fake-service/fake.service';
 import { Subscription } from 'rxjs';
 import { Fake } from '../fake-service/fake';
@@ -45,7 +45,7 @@ export class MainFakeComponent implements OnInit {
   }
 
   handlerFake(fake) {
-    return fake ? fake : {id: null, userId: null, title: null, body: null };
+    return fake ? fake : { id: null, userId: null, title: null, body: null };
   }
 
 }

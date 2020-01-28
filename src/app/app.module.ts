@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { FakeService } from './fake-service/fake.service';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FakeService } from './fake-service/fake.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutes
+    AppRoutes,
+    RouterModule,
   ],
   providers: [
     FakeService
