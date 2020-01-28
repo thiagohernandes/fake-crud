@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FakeService } from '../fake-service/fake.service';
 import { Subscription } from 'rxjs';
+import { Fake } from '../fake-service/fake';
 
 @Component({
   selector: 'app-main-fake',
@@ -11,12 +12,18 @@ export class MainFakeComponent implements OnInit {
 
   public errorHttp: any;
   public loading = false;
+  public getStructureUpdated: Subscription;
 
   constructor(private fakeService: FakeService) {
+    this.getStructureUpdated = this.fakeService.getUpdateStructureFakeFcn().subscribe(
+      (fake: Fake) =>{
+        this.fakeService.listFakesLoaded.unshift(fake);
+      }
+    );
   }
 
   ngOnInit() {
-    this.getListFakes();
+   // this.getListFakes();
   }
 
   getListFakes() {

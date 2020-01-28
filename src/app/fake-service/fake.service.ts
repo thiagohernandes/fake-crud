@@ -16,7 +16,17 @@ export class FakeService {
 
   public listFakesLoaded: Fake[] = [];
 
+  private updateStructureFake = new Subject<Fake>();
+
   constructor(private http: HttpClient) { }
+
+  updateStructureFakeFcn(fake: Fake) {
+    this.updateStructureFake.next(fake);
+  }
+
+  getUpdateStructureFakeFcn(): Observable<Fake> {
+    return this.updateStructureFake.asObservable();
+  }
 
   allFakes(): Observable<Fake[]> {
     const url = `${API_URL}`;
@@ -26,7 +36,8 @@ export class FakeService {
   newFake(fake: Fake): Observable<Fake> {
     console.log(`Sucesso ao criar fake`);
     fake.id = this.listFakesLoaded.length + 1;
-    this.listFakesLoaded.unshift(fake);
+    this.updateStructureFakeFcn(fake);
+   // this.listFakesLoaded.unshift(fake);
     return this.http.post<Fake>(API_URL, fake, HTTP_OPTIONS);
   }
 
