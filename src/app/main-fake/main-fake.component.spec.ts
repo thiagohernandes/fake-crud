@@ -3,7 +3,7 @@ import { MainFakeComponent } from './main-fake.component';
 import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 describe('MainFakeComponent', () => {
   beforeEach(async(() => {
@@ -13,7 +13,8 @@ describe('MainFakeComponent', () => {
       ],
       imports: [RouterModule,
                 RouterTestingModule,
-                HttpClientTestingModule]
+                HttpClientTestingModule,
+                ScrollingModule]
     }).compileComponents();
   }));
 

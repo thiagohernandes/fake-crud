@@ -12,6 +12,9 @@ import { HomeComponent } from './home/home.component';
 import { FakeService } from './fake-service/fake.service';
 import { RouterModule } from '@angular/router';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +29,9 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     AppRoutes,
     RouterModule,
+    BrowserAnimationsModule,
+    BrowserAnimationsModule,
+    ScrollingModule
   ],
   providers: [
     FakeService

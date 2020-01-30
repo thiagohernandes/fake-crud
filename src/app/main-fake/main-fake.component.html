@@ -2,6 +2,18 @@
   <div style="text-align: center" *ngIf="loading">
     <img style="width: 200px;" src="assets/img/loading.gif">
   </div>
+<br/>
+    <input #termSearch (change)="searchScrolling(termSearch.value)" >
+    <div class="scroll-container">
+      <cdk-virtual-scroll-viewport itemSize="50" class="scroll-view">
+        <div *cdkVirtualFor="let person of persons;let i = index" class="">
+            <h5><b>{{person.name}}</b></h5>
+            <h6><b>ID: {{i}}</b></h6>
+            <p>{{person.bio}}</p>
+      </div>
+      </cdk-virtual-scroll-viewport>
+    </div>
+
   <button (click)="getListFakes()">Load</button>
     <table class="table table-striped">
         <thead>
